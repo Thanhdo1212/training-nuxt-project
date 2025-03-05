@@ -1,0 +1,142 @@
+[
+  {
+    "id": 1,
+    "name": "Laptop Dell XPS 13",
+    "price": "25,000,000 VND",
+    "brand": "Dell",
+    "tags": ["hot", "laptop"]
+  },
+  {
+    "id": 2,
+    "name": "iPhone 14 Pro Max",
+    "price": "30,000,000 VND",
+    "brand": "Apple",
+    "tags": ["phone", "new"]
+  },
+  {
+    "id": 3,
+    "name": "Samsung Galaxy S23",
+    "price": "22,000,000 VND",
+    "brand": "Samsung",
+    "tags": ["phone", "hot"]
+  },
+  {
+    "id": 4,
+    "name": "MacBook Air M2",
+    "price": "28,000,000 VND",
+    "brand": "Apple",
+    "tags": ["laptop", "apple"]
+  },
+  {
+    "id": 5,
+    "name": "Sony WH-1000XM5",
+    "price": "8,500,000 VND",
+    "brand": "Sony",
+    "tags": ["headphone", "new"]
+  },
+  {
+    "id": 6,
+    "name": "iPad Pro 12.9 M2",
+    "price": "35,000,000 VND",
+    "brand": "Apple",
+    "tags": ["tablet", "apple"]
+  },
+  {
+    "id": 7,
+    "name": "ASUS ROG Zephyrus G14",
+    "price": "45,000,000 VND",
+    "brand": "ASUS",
+    "tags": ["gaming", "laptop"]
+  },
+  {
+    "id": 8,
+    "name": "GoPro Hero 11",
+    "price": "12,000,000 VND",
+    "brand": "GoPro",
+    "tags": ["camera", "action"]
+  },
+  {
+    "id": 9,
+    "name": "Canon EOS R6",
+    "price": "50,000,000 VND",
+    "brand": "Canon",
+    "tags": ["camera", "dslr"]
+  },
+  {
+    "id": 10,
+    "name": "Samsung Galaxy Tab S8",
+    "price": "20,000,000 VND",
+    "brand": "Samsung",
+    "tags": ["tablet", "android"]
+  },
+  {
+    "id": 11,
+    "name": "Xbox Series X",
+    "price": "16,000,000 VND",
+    "brand": "Microsoft",
+    "tags": ["gaming", "console"]
+  },
+  {
+    "id": 12,
+    "name": "PlayStation 5",
+    "price": "18,500,000 VND",
+    "brand": "Sony",
+    "tags": ["gaming", "console"]
+  },
+  {
+    "id": 13,
+    "name": "AirPods Pro 2",
+    "price": "6,000,000 VND",
+    "brand": "Apple",
+    "tags": ["audio", "apple"]
+  },
+  {
+    "id": 14,
+    "name": "Google Pixel 7 Pro",
+    "price": "23,000,000 VND",
+    "brand": "Google",
+    "tags": ["phone", "android"]
+  },
+  {
+    "id": 15,
+    "name": "Dell Alienware m15 R6",
+    "price": "55,000,000 VND",
+    "brand": "Dell",
+    "tags": ["gaming", "laptop"]
+  },
+  {
+    "id": 16,
+    "name": "DJI Mavic 3",
+    "price": "60,000,000 VND",
+    "brand": "DJI",
+    "tags": ["drone", "camera"]
+  },
+  {
+    "id": 17,
+    "name": "OnePlus 11",
+    "price": "18,000,000 VND",
+    "brand": "OnePlus",
+    "tags": ["phone", "android"]
+  },
+  {
+    "id": 18,
+    "name": "Razer BlackShark V2",
+    "price": "3,500,000 VND",
+    "brand": "Razer",
+    "tags": ["gaming", "headphone"]
+  },
+  {
+    "id": 19,
+    "name": "Microsoft Surface Laptop 5",
+    "price": "35,000,000 VND",
+    "brand": "Microsoft",
+    "tags": ["laptop", "business"]
+  },
+  {
+    "id": 20,
+    "name": "Bose QuietComfort 45",
+    "price": "7,500,000 VND",
+    "brand": "Bose",
+    "tags": ["audio", "headphone"]
+  }
+]
