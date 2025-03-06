@@ -15,49 +15,35 @@
               ></v-text-field>
 
               <v-radio-group v-model="sortBy">
-                <template v-slot:label>
-                  <h3>Sort By:</h3>
-                </template>
-                <v-radio value="title">
-                  <template v-slot:label>
-                    <div>
-                      By
-                      <strong>title</strong>
-                    </div>
-                  </template>
-                </v-radio>
-                <v-radio value="price">
-                  <template v-slot:label>
-                    <div>
-                      By
-                      <strong>Price</strong>
-                    </div>
-                  </template>
-                </v-radio>
+                <template v-slot:label><h3>Sort By:</h3></template>
+                <v-radio value="title"
+                  ><template v-slot:label
+                    >By <strong>Title</strong></template
+                  ></v-radio
+                >
+                <v-radio value="price"
+                  ><template v-slot:label
+                    >By <strong>Price</strong></template
+                  ></v-radio
+                >
               </v-radio-group>
+
               <v-radio-group v-model="order">
-                <template v-slot:label>
-                  <h3>Sort Order:</h3>
-                </template>
-                <v-radio value="ascending">
-                  <template v-slot:label>
-                    <div>
-                      By
-                      <strong>Ascending</strong>
-                    </div>
-                  </template>
-                </v-radio>
-                <v-radio value="deascending">
-                  <template v-slot:label>
-                    <div>
-                      By
-                      <strong>Deascending</strong>
-                    </div>
-                  </template>
-                </v-radio>
+                <template v-slot:label><h3>Sort Order:</h3></template>
+                <v-radio value="ascending"
+                  ><template v-slot:label
+                    >By <strong>Ascending</strong></template
+                  ></v-radio
+                >
+                <v-radio value="deascending"
+                  ><template v-slot:label
+                    >By <strong>Descending</strong></template
+                  ></v-radio
+                >
               </v-radio-group>
             </v-card>
           </v-col>
+
           <v-col cols="12" md="10">
             <v-row>
               <v-col
@@ -68,19 +54,27 @@
                 sm="6"
                 lg="3"
               >
-                <v-card
-                    class="mx-auto"
-                    :hover="true"
+                <v-card class="mx-auto" :hover="true">
+                  <v-img
                     @click="router.push({ path: `/products/${product.id}` })"
-                >
-                  <v-img height="200px" :src="product?.image" cover></v-img>
+                    height="200px"
+                    :src="product?.image"
+                    cover
+                  ></v-img>
 
-                  <v-card-title>{{ product?.title }}</v-card-title>
-
+                  <v-card-title
+                    @click="router.push({ path: `/products/${product.id}` })"
+                    >{{ product?.title }}</v-card-title
+                  >
                   <v-card-subtitle>{{ product?.price }}</v-card-subtitle>
 
-                  <v-card-actions>
-                    <v-btn color="orange-lighten-2" text="Detail"></v-btn>
+                  <v-card-actions class="d-flex justify-space-between">
+                    <v-btn color="orange-lighten-2" @click="openDialog(product)"
+                      >Detail</v-btn
+                    >
+                    <v-btn color="blue-lighten-2" @click="openDialog(product)"
+                      >View</v-btn
+                    >
                   </v-card-actions>
                 </v-card>
               </v-col>
@@ -88,44 +82,51 @@
           </v-col>
         </v-row>
       </v-container>
+
+      <!-- Sử dụng component Model -->
+      <Model :product="selectedProduct" v-model:dialogVisible="dialogVisible" />
     </v-main>
   </v-app>
 </template>
 
 <script setup>
-import { VCol } from "vuetify/components";
-import {useProductStore} from "~/stores/ProductStore.js";
-import {createRouter as $router} from "#vue-router";
+import { ref, computed, watch } from "vue";
+import { useProductStore } from "~/stores/ProductStore.js";
+import { useRouter } from "vue-router";
+import Model from "~/components/Model.vue"; // Import Model.vue
+
 const sortBy = ref("");
 const order = ref("ascending");
 const title = ref("");
 const router = useRouter();
-const productStore = useProductStore()
+const productStore = useProductStore();
 const { products } = storeToRefs(productStore);
+
+const dialogVisible = ref(false);
+const selectedProduct = ref(null);
+
+// Hàm mở dialog khi nhấn "Detail" hoặc "View"
+const openDialog = (product) => {
+  selectedProduct.value = product;
+  dialogVisible.value = true;
+};
 
 // Fetch sản phẩm khi component mounted
 productStore.fetchProducts();
 
-// Fetch data từ API
-// const { data: products, error } = useFetch("https://fakestoreapi.com/products");
-
-// Kiểm tra nếu có lỗi khi fetch data
-// if (error.value) {
-//   console.error("Lỗi khi lấy dữ liệu:", error.value);
-// }
-
-// Search P
+// Search sản phẩm
 const filteredProducts = computed(() => {
   if (title.value) {
     return [...products.value].filter((item) => {
       return title.value
-        .toLocaleLowerCase()
+        .toLowerCase()
         .split(" ")
-        .every((v) => item.title.toLocaleLowerCase().includes(v));
+        .every((v) => item.title.toLowerCase().includes(v));
     });
   } else return products.value;
 });
 
+// Hàm sắp xếp sản phẩm
 const dynamicSort = (property) => {
   let sortOrder = 1;
   if (property[0] === "-") {
@@ -133,14 +134,13 @@ const dynamicSort = (property) => {
     property = property.substr(1);
   }
   return (a, b) => {
-    /* next line works with strings and numbers,
-     * and you may want to customize it to your needs
-     */
     const result =
       a[property] < b[property] ? -1 : a[property] > b[property] ? 1 : 0;
     return result * sortOrder;
   };
 };
+
+// Sắp xếp danh sách sản phẩm
 const sortProducts = () => {
   if (order.value == "deascending") {
     products.value.sort(dynamicSort("-" + sortBy.value));
@@ -149,11 +149,7 @@ const sortProducts = () => {
   }
 };
 
-watch(sortBy, () => {
-  sortProducts();
-});
-
-watch(order, () => {
-  sortProducts();
-});
+// Theo dõi sự thay đổi để cập nhật danh sách
+watch(sortBy, sortProducts);
+watch(order, sortProducts);
 </script>
