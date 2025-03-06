@@ -68,12 +68,15 @@
                   >
                   <v-card-subtitle>{{ product?.price }}</v-card-subtitle>
                   <v-card-actions class="d-flex justify-space-between">
-                    <v-btn color="orange-lighten-2" @click="openDialog(product)"
+                    <v-btn
+                      color="orange-lighten-2"
+                      @click="router.push({ path: `/products/${product.id}` })"
                       >Detail</v-btn
                     >
                     <v-btn color="blue-lighten-2" @click="openDialog(product)"
                       >View</v-btn
                     >
+                  </v-card-actions>
                 </v-card>
               </v-col>
             </v-row>
