@@ -101,7 +101,6 @@
     View
   </v-btn>
 </v-card-actions>
-     </v-card-actions>
                 </v-card>
               </v-col>
             </v-row>
@@ -115,7 +114,6 @@
 <script setup>
 import { VCol } from "vuetify/components";
 import {useProductStore} from "~/stores/ProductStore.js";
-import {createRouter as $router} from "#vue-router";
 const sortBy = ref("");
 const order = ref("ascending");
 const title = ref("");

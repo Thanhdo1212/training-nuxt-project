@@ -12,6 +12,7 @@
   "dependencies": {
     "@ant-design-vue/nuxt": "^1.4.6",
     "@mdi/font": "^7.4.47",
+    "@nuxt/image": "^1.9.0",
     "@nuxtjs/vuetify": "^1.12.3",
     "@pinia/nuxt": "^0.10.1",
     "ant-design-vue": "^4.2.6",
