@@ -360,12 +360,12 @@ const relatedProducts = computed(() => {
 
   return products.value
       .filter(p => p.category === product.value.category && p.id !== productId)
-      .slice(0, 4);
+      .slice(0, 7);
 });
 
 // Hàm điều hướng
 const navigateBack = () => {
-  router.push('/');
+  router.push('/products');
 };
 
 const navigateToProduct = (id) => {
