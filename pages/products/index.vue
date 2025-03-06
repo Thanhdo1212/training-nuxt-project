@@ -80,7 +80,9 @@
                   <v-card-subtitle>{{ product?.price }}</v-card-subtitle>
 
                   <v-card-actions>
-                    <v-btn color="orange-lighten-2" text="Detail"></v-btn>
+                    <v-btn
+                        @click="router.push({ path: `/products/${product.id}` })"
+                        color="orange-lighten-2" text="Detail"></v-btn>
                   </v-card-actions>
                 </v-card>
               </v-col>
