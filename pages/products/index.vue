@@ -61,19 +61,23 @@
           <v-col cols="12" md="10">
             <v-row>
               <v-col
-                v-for="(product, index) in filteredProducts"
+                v-for="(product, index) in productStore.products"
                 :key="index"
                 cols="12"
                 md="4"
                 sm="6"
                 lg="3"
               >
-                <v-card class="mx-auto">
-                  <v-img height="200px" :src="product.image" cover></v-img>
+                <v-card
+                    class="mx-auto"
+                    :hover="true"
+                    @click="router.push({ path: `/products/${product.id}` })"
+                >
+                  <v-img height="200px" :src="product?.image" cover></v-img>
 
-                  <v-card-title>{{ product.title }}</v-card-title>
+                  <v-card-title>{{ product?.title }}</v-card-title>
 
-                  <v-card-subtitle>{{ product.price }}</v-card-subtitle>
+                  <v-card-subtitle>{{ product?.price }}</v-card-subtitle>
 
                   <v-card-actions>
                     <v-btn color="orange-lighten-2" text="Detail"></v-btn>
@@ -90,17 +94,25 @@
 
 <script setup>
 import { VCol } from "vuetify/components";
+import {useProductStore} from "~/stores/ProductStore.js";
+import {createRouter as $router} from "#vue-router";
 const sortBy = ref("");
 const order = ref("ascending");
 const title = ref("");
+const router = useRouter();
+const productStore = useProductStore()
+const { products } = storeToRefs(productStore);
+
+// Fetch sản phẩm khi component mounted
+productStore.fetchProducts();
 
 // Fetch data từ API
-const { data: products, error } = useFetch("https://fakestoreapi.com/products");
+// const { data: products, error } = useFetch("https://fakestoreapi.com/products");
 
 // Kiểm tra nếu có lỗi khi fetch data
-if (error.value) {
-  console.error("Lỗi khi lấy dữ liệu:", error.value);
-}
+// if (error.value) {
+//   console.error("Lỗi khi lấy dữ liệu:", error.value);
+// }
 
 // Search P
 const filteredProducts = computed(() => {
