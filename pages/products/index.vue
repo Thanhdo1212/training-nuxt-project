@@ -1,102 +1,100 @@
 <template>
-  <v-app id="inspire">
-    <v-app-bar>
-      <v-app-bar-title>List Product</v-app-bar-title>
-    </v-app-bar>
+  <NuxtLayout>
+    <v-app id="inspire">
+      <v-main class="bg-grey-lighten-2">
+        <v-container fluid>
+          <v-row>
+            <v-col cols="12" md="2">
+              <v-card class="py-2 px-3">
+                <v-text-field
+                    placeholder="Search Product"
+                    v-model="title"
+                ></v-text-field>
 
-    <v-main class="bg-grey-lighten-2">
-      <v-container fluid>
-        <v-row>
-          <v-col cols="12" md="2">
-            <v-card class="py-2 px-3">
-              <v-text-field
-                placeholder="Search Product"
-                v-model="title"
-              ></v-text-field>
-
-              <v-radio-group v-model="sortBy">
-                <template v-slot:label>
-                  <h3>Sort By:</h3>
-                </template>
-                <v-radio value="title">
+                <v-radio-group v-model="sortBy">
                   <template v-slot:label>
-                    <div>
-                      By
-                      <strong>title</strong>
-                    </div>
+                    <h3>Sort By:</h3>
                   </template>
-                </v-radio>
-                <v-radio value="price">
+                  <v-radio value="title">
+                    <template v-slot:label>
+                      <div>
+                        By
+                        <strong>title</strong>
+                      </div>
+                    </template>
+                  </v-radio>
+                  <v-radio value="price">
+                    <template v-slot:label>
+                      <div>
+                        By
+                        <strong>Price</strong>
+                      </div>
+                    </template>
+                  </v-radio>
+                </v-radio-group>
+                <v-radio-group v-model="order">
                   <template v-slot:label>
-                    <div>
-                      By
-                      <strong>Price</strong>
-                    </div>
+                    <h3>Sort Order:</h3>
                   </template>
-                </v-radio>
-              </v-radio-group>
-              <v-radio-group v-model="order">
-                <template v-slot:label>
-                  <h3>Sort Order:</h3>
-                </template>
-                <v-radio value="ascending">
-                  <template v-slot:label>
-                    <div>
-                      By
-                      <strong>Ascending</strong>
-                    </div>
-                  </template>
-                </v-radio>
-                <v-radio value="deascending">
-                  <template v-slot:label>
-                    <div>
-                      By
-                      <strong>Deascending</strong>
-                    </div>
-                  </template>
-                </v-radio>
-              </v-radio-group>
-            </v-card>
-          </v-col>
-          <v-col cols="12" md="10">
-            <v-row>
-              <v-col
-                v-for="(product, index) in productStore.products"
-                :key="index"
-                cols="12"
-                md="4"
-                sm="6"
-                lg="3"
-              >
-                <v-card
-                    class="mx-auto"
-                    :hover="true"
-                    @click="router.push({ path: `/products/${product.id}` })"
+                  <v-radio value="ascending">
+                    <template v-slot:label>
+                      <div>
+                        By
+                        <strong>Ascending</strong>
+                      </div>
+                    </template>
+                  </v-radio>
+                  <v-radio value="deascending">
+                    <template v-slot:label>
+                      <div>
+                        By
+                        <strong>Deascending</strong>
+                      </div>
+                    </template>
+                  </v-radio>
+                </v-radio-group>
+              </v-card>
+            </v-col>
+            <v-col cols="12" md="10">
+              <v-row>
+                <v-col
+                    v-for="(product, index) in productStore.products"
+                    :key="index"
+                    cols="12"
+                    md="4"
+                    sm="6"
+                    lg="3"
                 >
-                  <v-img height="200px" :src="product?.image" cover></v-img>
+                  <v-card
+                      class="mx-auto"
+                      :hover="true"
+                      @click="router.push({ path: `/products/${product.id}` })"
+                  >
+                    <v-img height="200px" :src="product?.image" cover></v-img>
 
-                  <v-card-title>{{ product?.title }}</v-card-title>
+                    <v-card-title>{{ product?.title }}</v-card-title>
 
-                  <v-card-subtitle>{{ product?.price }}</v-card-subtitle>
-<v-card-actions class="d-flex justify-space-between">
-  <v-btn
-    color="orange-lighten-2"
-    @click="router.push({ path: `/products/${product.id}` })"
-  >
-    Detail
-  </v-btn>
-  <v-btn color="blue-lighten-2" @click="openDialog(product)">
-    View
-  </v-btn>
-</v-card-actions>
-                </v-card>
-              </v-col>
-            </v-row>
-          </v-col>
-        </v-row>
-      </v-container>
-    </v-main>
-  </v-app>
+                    <v-card-subtitle>{{ product?.price }}</v-card-subtitle>
+                    <v-card-actions class="d-flex justify-space-between">
+                      <v-btn
+                          color="orange-lighten-2"
+                          @click="router.push({ path: `/products/${product.id}` })"
+                      >
+                        Detail
+                      </v-btn>
+                      <v-btn color="blue-lighten-2" @click="openDialog(product)">
+                        View
+                      </v-btn>
+                    </v-card-actions>
+                  </v-card>
+                </v-col>
+              </v-row>
+            </v-col>
+          </v-row>
+        </v-container>
+      </v-main>
+    </v-app>
+  </NuxtLayout>
 </template>
 
 <script setup>
