@@ -7,8 +7,8 @@
             <v-col cols="12" md="2">
               <v-card class="py-2 px-3">
                 <v-text-field
-                    placeholder="Search Product"
-                    v-model="title"
+                  placeholder="Search Product"
+                  v-model="title"
                 ></v-text-field>
 
                 <v-radio-group v-model="sortBy">
@@ -58,17 +58,17 @@
             <v-col cols="12" md="10">
               <v-row>
                 <v-col
-                    v-for="(product, index) in productStore.products"
-                    :key="index"
-                    cols="12"
-                    md="4"
-                    sm="6"
-                    lg="3"
+                  v-for="(product, index) in productStore.products"
+                  :key="index"
+                  cols="12"
+                  md="4"
+                  sm="6"
+                  lg="3"
                 >
                   <v-card
-                      class="mx-auto"
-                      :hover="true"
-                      @click="router.push({ path: `/products/${product.id}` })"
+                    class="mx-auto"
+                    :hover="true"
+                    @click="router.push({ path: `/products/${product.id}` })"
                   >
                     <v-img height="200px" :src="product?.image" cover></v-img>
 
@@ -77,12 +77,17 @@
                     <v-card-subtitle>{{ product?.price }}</v-card-subtitle>
                     <v-card-actions class="d-flex justify-space-between">
                       <v-btn
-                          color="orange-lighten-2"
-                          @click="router.push({ path: `/products/${product.id}` })"
+                        color="orange-lighten-2"
+                        @click="
+                          router.push({ path: `/products/${product.id}` })
+                        "
                       >
                         Detail
                       </v-btn>
-                      <v-btn color="blue-lighten-2" @click="openDialog(product)">
+                      <v-btn
+                        color="blue-lighten-2"
+                        @click.stop="openDialog(product)"
+                      >
                         View
                       </v-btn>
                     </v-card-actions>
@@ -92,6 +97,11 @@
             </v-col>
           </v-row>
         </v-container>
+        <!-- Sử dụng component Model -->
+        <Modal
+          :product="selectedProduct"
+          v-model:dialogVisible="dialogVisible"
+        />
       </v-main>
     </v-app>
   </NuxtLayout>
@@ -99,26 +109,25 @@
 
 <script setup>
 import { VCol } from "vuetify/components";
-import {useProductStore} from "~/stores/ProductStore.js";
+import { useProductStore } from "~/stores/ProductStore.js";
+import Modal from "~/components/Modal.vue";
 const sortBy = ref("");
 const order = ref("ascending");
 const title = ref("");
 const router = useRouter();
-const productStore = useProductStore()
+const productStore = useProductStore();
 const { products } = storeToRefs(productStore);
+
+const dialogVisible = ref(false);
+const selectedProduct = ref(null);
+
+const openDialog = (product) => {
+  selectedProduct.value = product;
+  dialogVisible.value = true;
+};
 
 // Fetch sản phẩm khi component mounted
 productStore.fetchProducts();
-
-// Fetch data từ API
-// const { data: products, error } = useFetch("https://fakestoreapi.com/products");
-
-// Kiểm tra nếu có lỗi khi fetch data
-// if (error.value) {
-//   console.error("Lỗi khi lấy dữ liệu:", error.value);
-// }
-
-// Search P
 const filteredProducts = computed(() => {
   if (title.value) {
     return [...products.value].filter((item) => {
