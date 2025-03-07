@@ -4,7 +4,7 @@
     <v-app-bar>
       <v-app-bar-nav-icon></v-app-bar-nav-icon>
       <v-app-bar-title>
-        <div class="d-flex align-center">
+        <div @click="router.push('/products')" style="cursor: pointer" class="d-flex align-center">
           <v-icon class="mr-2">mdi-shopping</v-icon>
           Shop App
         </div>
@@ -26,4 +26,6 @@
 <script setup>
 import CartDrawer from '~/components/CartDrawer.vue';
 import CartIcon from '~/components/CartIcon.vue';
+
+const router = useRouter();
 </script>
