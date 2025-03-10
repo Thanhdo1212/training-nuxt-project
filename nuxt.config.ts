@@ -1,6 +1,10 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  css: ["vuetify/styles", "@mdi/font/css/materialdesignicons.css"],
+  css: [
+      "vuetify/styles",
+      "@mdi/font/css/materialdesignicons.css",
+      '~/assets/scss/main.scss'
+  ],
   build: {
     transpile: ["vuetify"],
   },
@@ -10,7 +14,12 @@ export default defineNuxtConfig({
       "@ant-design-vue/nuxt",
       '@pinia/nuxt',
   ],
-  antd: {
-    // Options
-  },
+    vite: {
+        css: {
+            preprocessorOptions: {
+                scss: {
+                }
+            }
+        }
+    }
 });

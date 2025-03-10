@@ -1,0 +1,49 @@
+@use 'assets/scss/settings/variables' as vars;
+@use 'assets/scss/settings/fonts' as fonts;
+
+.c-header {
+  padding: vars.$spacing-md 0;
+  background-color: vars.$color-light;
+  border-bottom: 1px solid rgba(vars.$text-dark, 0.1);
+
+  &__container {
+    width: 100%;
+    padding-right: vars.$spacing-md;
+    padding-left: vars.$spacing-md;
+    margin-right: auto;
+    margin-left: auto;
+    max-width: 1200px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__logo {
+    font-weight: fonts.$font-weight-bold;
+    font-size: fonts.$font-size-lg;
+    color: vars.$text-dark;
+
+    img {
+      max-height: 40px;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: vars.$spacing-md;
+  }
+
+  &--transparent {
+    background-color: transparent;
+    border-bottom: none;
+  }
+
+  &--fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: vars.$z-index-fixed;
+  }
+}

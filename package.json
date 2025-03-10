@@ -22,5 +22,9 @@
     "vue": "latest",
     "vue-router": "latest",
     "vuetify": "^3.7.14"
+  },
+  "devDependencies": {
+    "sass": "^1.55.0",
+    "sass-loader": "^10.5.2"
   }
 }

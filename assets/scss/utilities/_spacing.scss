@@ -1,0 +1,55 @@
+@use 'assets/scss/settings/variables' as vars;
+
+// Margins
+@each $size, $value in (
+        'xs': vars.$spacing-xs,
+        'sm': vars.$spacing-sm,
+        'md': vars.$spacing-md,
+        'lg': vars.$spacing-lg,
+        'xl': vars.$spacing-xl
+) {
+  .u-m-#{$size} { margin: $value !important; }
+  .u-mt-#{$size} { margin-top: $value !important; }
+  .u-mr-#{$size} { margin-right: $value !important; }
+  .u-mb-#{$size} { margin-bottom: $value !important; }
+  .u-ml-#{$size} { margin-left: $value !important; }
+  .u-mx-#{$size} {
+    margin-right: $value !important;
+    margin-left: $value !important;
+  }
+  .u-my-#{$size} {
+    margin-top: $value !important;
+    margin-bottom: $value !important;
+  }
+}
+
+.u-m-auto { margin: auto !important; }
+.u-mx-auto {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+.u-ml-auto { margin-left: auto !important; }
+.u-mr-auto { margin-right: auto !important; }
+
+// Paddings
+@each $size, $value in (
+        'xs': vars.$spacing-xs,
+        'sm': vars.$spacing-sm,
+        'md': vars.$spacing-md,
+        'lg': vars.$spacing-lg,
+        'xl': vars.$spacing-xl
+) {
+  .u-p-#{$size} { padding: $value !important; }
+  .u-pt-#{$size} { padding-top: $value !important; }
+  .u-pr-#{$size} { padding-right: $value !important; }
+  .u-pb-#{$size} { padding-bottom: $value !important; }
+  .u-pl-#{$size} { padding-left: $value !important; }
+  .u-px-#{$size} {
+    padding-right: $value !important;
+    padding-left: $value !important;
+  }
+  .u-py-#{$size} {
+    padding-top: $value !important;
+    padding-bottom: $value !important;
+  }
+}

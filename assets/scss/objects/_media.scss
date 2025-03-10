@@ -1,0 +1,28 @@
+@use 'assets/scss/settings/variables' as vars;
+
+.o-media {
+  display: flex;
+  align-items: flex-start;
+
+  &__image {
+    margin-right: vars.$spacing-md;
+    flex-shrink: 0;
+  }
+
+  &__content {
+    flex: 1;
+  }
+
+  &--center {
+    align-items: center;
+  }
+
+  &--reverse {
+    flex-direction: row-reverse;
+
+    .o-media__image {
+      margin-right: 0;
+      margin-left: vars.$spacing-md;
+    }
+  }
+}

@@ -1,0 +1,83 @@
+@use 'assets/scss/settings/variables' as vars;
+
+// Text colors
+.u-text-primary { color: vars.$color-primary !important; }
+.u-text-secondary { color: vars.$color-secondary !important; }
+.u-text-tertiary { color: vars.$color-tertiary !important; }
+.u-text-accent { color: vars.$color-accent !important; }
+.u-text-dark { color: vars.$color-dark !important; }
+.u-text-light { color: vars.$color-light !important; }
+.u-text-muted { color: vars.$text-muted !important; }
+
+// Background colors
+.u-bg-primary { background-color: vars.$color-primary !important; }
+.u-bg-secondary { background-color: vars.$color-secondary !important; }
+.u-bg-tertiary { background-color: vars.$color-tertiary !important; }
+.u-bg-accent { background-color: vars.$color-accent !important; }
+.u-bg-dark { background-color: vars.$color-dark !important; }
+.u-bg-light { background-color: vars.$color-light !important; }
+.u-bg-white { background-color: #fff !important; }
+.u-bg-transparent { background-color: transparent !important; }
+
+// Color variations - primary
+.u-bg-primary-light { background-color: lighten(vars.$color-primary, 20%) !important; }
+.u-bg-primary-dark { background-color: darken(vars.$color-primary, 20%) !important; }
+.u-text-primary-light { color: lighten(vars.$color-primary, 20%) !important; }
+.u-text-primary-dark { color: darken(vars.$color-primary, 20%) !important; }
+
+// Color variations - secondary
+.u-bg-secondary-light { background-color: lighten(vars.$color-secondary, 20%) !important; }
+.u-bg-secondary-dark { background-color: darken(vars.$color-secondary, 20%) !important; }
+.u-text-secondary-light { color: lighten(vars.$color-secondary, 20%) !important; }
+.u-text-secondary-dark { color: darken(vars.$color-secondary, 20%) !important; }
+
+// Color opacity utilities
+@for $i from 1 through 9 {
+  $opacity: $i * 0.1;
+
+  .u-bg-primary-opacity-#{$i} { background-color: rgba(vars.$color-primary, $opacity) !important; }
+  .u-bg-secondary-opacity-#{$i} { background-color: rgba(vars.$color-secondary, $opacity) !important; }
+  .u-bg-dark-opacity-#{$i} { background-color: rgba(vars.$color-dark, $opacity) !important; }
+  .u-text-dark-opacity-#{$i} { color: rgba(vars.$text-dark, $opacity) !important; }
+  .u-text-light-opacity-#{$i} { color: rgba(vars.$text-light, $opacity) !important; }
+}
+
+// Border colors
+.u-border-primary { border-color: vars.$color-primary !important; }
+.u-border-secondary { border-color: vars.$color-secondary !important; }
+.u-border-tertiary { border-color: vars.$color-tertiary !important; }
+.u-border-accent { border-color: vars.$color-accent !important; }
+.u-border-dark { border-color: vars.$color-dark !important; }
+.u-border-light { border-color: vars.$color-light !important; }
+.u-border-transparent { border-color: transparent !important; }
+
+// Border utilities
+.u-border { border: 1px solid rgba(vars.$text-dark, 0.1) !important; }
+.u-border-0 { border: 0 !important; }
+.u-border-top { border-top: 1px solid rgba(vars.$text-dark, 0.1) !important; }
+.u-border-right { border-right: 1px solid rgba(vars.$text-dark, 0.1) !important; }
+.u-border-bottom { border-bottom: 1px solid rgba(vars.$text-dark, 0.1) !important; }
+.u-border-left { border-left: 1px solid rgba(vars.$text-dark, 0.1) !important; }
+
+.u-rounded { border-radius: vars.$border-radius-sm !important; }
+.u-rounded-md { border-radius: vars.$border-radius-md !important; }
+.u-rounded-lg { border-radius: vars.$border-radius-lg !important; }
+.u-rounded-full { border-radius: 9999px !important; }
+.u-rounded-none { border-radius: 0 !important; }
+
+// Gradient backgrounds
+.u-bg-gradient-primary {
+  background-image: linear-gradient(45deg, vars.$color-primary, lighten(vars.$color-primary, 15%)) !important;
+}
+
+.u-bg-gradient-secondary {
+  background-image: linear-gradient(45deg, vars.$color-secondary, lighten(vars.$color-secondary, 15%)) !important;
+}
+
+.u-bg-gradient-tertiary {
+  background-image: linear-gradient(45deg, vars.$color-tertiary, lighten(vars.$color-tertiary, 15%)) !important;
+}
+
+.u-bg-gradient-dark {
+  background-image: linear-gradient(45deg, vars.$color-dark, lighten(vars.$color-dark, 15%)) !important;
+}

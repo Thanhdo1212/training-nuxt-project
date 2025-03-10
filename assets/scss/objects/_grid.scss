@@ -1,0 +1,59 @@
+@use 'assets/scss/settings/variables' as vars;
+@use 'assets/scss/tools/mixins' as mixins;
+
+.o-grid {
+  display: grid;
+  gap: vars.$spacing-md;
+
+  &--no-gap {
+    gap: 0;
+  }
+
+  &--small-gap {
+    gap: vars.$spacing-sm;
+  }
+
+  &--large-gap {
+    gap: vars.$spacing-lg;
+  }
+
+  // Default grid columns
+  @include mixins.respond-to(xs) {
+    grid-template-columns: 1fr;
+  }
+
+  @include mixins.respond-to(sm) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include mixins.respond-to(md) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @include mixins.respond-to(lg) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  // Column variants
+  &--2-cols {
+    @include mixins.respond-to(sm) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  &--3-cols {
+    @include mixins.respond-to(md) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  &--4-cols {
+    @include mixins.respond-to(lg) {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  &--auto-fit {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+}

@@ -1,0 +1,17 @@
+@use 'assets/scss/settings/variables' as vars;
+
+// Convert px to rem
+@function rem($pixels, $context: 16) {
+  @return ($pixels / $context) * 1rem;
+}
+
+// Get color with opacity
+@function color-opacity($color, $opacity) {
+  @return rgba($color, $opacity);
+}
+
+// Get complementary color
+@function get-contrast-color($color) {
+  $luminance: (0.299 * red($color) + 0.587 * green($color) + 0.114 * blue($color)) / 255;
+  @return if($luminance > 0.5, vars.$text-dark, vars.$text-light);
+}

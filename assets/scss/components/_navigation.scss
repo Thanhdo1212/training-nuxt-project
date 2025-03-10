@@ -1,0 +1,102 @@
+@use 'assets/scss/settings/variables' as vars;
+@use 'assets/scss/tools/mixins' as mixins;
+
+.c-navigation {
+  &__list {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__item {
+    position: relative;
+
+    &--has-children {
+      > .c-navigation__link {
+        &::after {
+          content: '▼';
+          display: inline-block;
+          font-size: 0.5em;
+          margin-left: vars.$spacing-xs;
+          vertical-align: middle;
+        }
+      }
+    }
+
+    &--active {
+      > .c-navigation__link {
+        color: vars.$color-primary;
+      }
+    }
+  }
+
+  &__link {
+    display: block;
+    padding: vars.$spacing-sm vars.$spacing-md;
+    color: vars.$text-dark;
+
+    &:hover {
+      color: vars.$color-primary;
+    }
+  }
+
+  &__dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 200px;
+    background-color: vars.$color-light;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: vars.$z-index-dropdown;
+    border-radius: vars.$border-radius-sm;
+
+    .c-navigation__item:hover > & {
+      display: block;
+    }
+
+    .c-navigation__list {
+      flex-direction: column;
+    }
+
+    .c-navigation__item {
+      width: 100%;
+    }
+
+    .c-navigation__link {
+      padding: vars.$spacing-sm vars.$spacing-md;
+    }
+  }
+
+  // Mobile navigation
+  &--mobile {
+    @include mixins.respond-to(lg) {
+      display: none;
+    }
+
+    .c-navigation__list {
+      flex-direction: column;
+    }
+
+    .c-navigation__dropdown {
+      position: static;
+      display: none;
+      box-shadow: none;
+      padding-left: vars.$spacing-md;
+    }
+
+    .c-navigation__item--active > .c-navigation__dropdown {
+      display: block;
+    }
+  }
+
+  // Desktop navigation
+  &--desktop {
+    display: none;
+
+    @include mixins.respond-to(lg) {
+      display: block;
+    }
+  }
+}

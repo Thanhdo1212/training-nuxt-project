@@ -1,0 +1,96 @@
+@use 'assets/scss/settings/variables' as vars;
+@use 'assets/scss/tools/mixins' as mixins;
+@use 'assets/scss/settings/fonts' as fonts;
+
+.c-header {
+  // ...
+  &__container {
+    width: 100%;
+    padding-right: vars.$spacing-md;
+    padding-left: vars.$spacing-md;
+    margin-right: auto;
+    margin-left: auto;
+    max-width: 1200px;
+  }
+  // ...
+}
+
+.c-footer {
+  padding: vars.$spacing-lg 0;
+  background-color: vars.$color-dark;
+  color: vars.$text-light;
+
+  &__container {
+    width: 100%;
+    padding-right: vars.$spacing-md;
+    padding-left: vars.$spacing-md;
+    margin-right: auto;
+    margin-left: auto;
+    max-width: 1200px;
+  }
+
+  &__grid {
+    @extend .o-grid !optional;
+  }
+
+  &__column {
+    margin-bottom: vars.$spacing-md;
+
+    @include mixins.respond-to(md) {
+      margin-bottom: 0;
+    }
+  }
+
+  &__title {
+    font-size: fonts.$font-size-lg;
+    font-weight: fonts.$font-weight-bold;
+    margin-bottom: vars.$spacing-md;
+  }
+
+  &__nav {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  &__nav-item {
+    margin-bottom: vars.$spacing-sm;
+  }
+
+  &__nav-link {
+    color: rgba(vars.$text-light, 0.8);
+
+    &:hover {
+      color: vars.$text-light;
+    }
+  }
+
+  &__bottom {
+    margin-top: vars.$spacing-lg;
+    padding-top: vars.$spacing-md;
+    border-top: 1px solid rgba(vars.$text-light, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+    @include mixins.respond-to(md) {
+      flex-direction: row;
+      justify-content: space-between;
+      text-align: left;
+    }
+  }
+
+  &__copyright {
+    margin-bottom: vars.$spacing-md;
+
+    @include mixins.respond-to(md) {
+      margin-bottom: 0;
+    }
+  }
+
+  &__social {
+    display: flex;
+    gap: vars.$spacing-md;
+  }
+}
