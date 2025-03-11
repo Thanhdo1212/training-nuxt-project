@@ -5,50 +5,50 @@
 // ===========================================
 // SETTINGS - Biến, cấu hình
 // ===========================================
-@use 'settings/variables' as vars;
-@use 'settings/breakpoints' as bp;
-@use 'settings/fonts' as fonts;
+@use "settings/variables" as vars;
+@use "settings/breakpoints" as bp;
+@use "settings/fonts" as fonts;
 
 // ===========================================
 // TOOLS - Mixins, functions
 // ===========================================
-@use 'tools/mixins' as mixins;
-@use 'tools/functions' as funcs;
+@use "tools/mixins" as mixins;
+@use "tools/functions" as funcs;
 
 // ===========================================
 // GENERIC - Reset, normalize
 // ===========================================
-@use 'generic/reset' as reset;
-@use 'generic/box-sizing'as box-sizing;
+@use "generic/reset" as reset;
+@use "generic/box-sizing" as box-sizing;
 
 // ===========================================
 // ELEMENTS - Các phần tử HTML
 // ===========================================
-@use 'elements/headings' as headings;
-@use 'elements/links' as links;
-@use 'elements/buttons' as buttons;
-@use 'elements/forms'as forms;
+@use "elements/headings" as headings;
+@use "elements/links" as links;
+@use "elements/buttons" as buttons;
+@use "elements/forms" as forms;
 
 // ===========================================
 // OBJECTS - Lớp không trang trí, layout
 // ===========================================
-@use 'objects/container' as container;
-@use 'objects/grid' as grid;
-@use 'objects/media' as media;
+@use "objects/container" as container;
+@use "objects/grid" as grid;
+@use "objects/media" as media;
 
 // ===========================================
 // COMPONENTS - UI components
 // ===========================================
-@use 'components/header' as header;
-@use 'components/footer' as footer;
-@use 'components/navigation' as nav;
-@use 'components/card' as card;
-@use 'components/modal' as modal;
+@use "components/header" as header;
+@use "components/footer" as footer;
+@use "components/navigation" as nav;
+@use "components/card" as card;
+@use "components/modal" as modal;
 
 // ===========================================
 // UTILITIES - Lớp trợ giúp
 // ===========================================
-@use 'utilities/spacing' as spacing;
-@use 'utilities/display' as display;
-@use 'utilities/text' as text;
-@use 'utilities/colors' as colors;
+@use "utilities/spacing" as spacing;
+@use "utilities/display" as display;
+@use "utilities/text" as text;
+@use "utilities/colors" as colors;

@@ -1,5 +1,5 @@
-@use 'assets/scss/settings/variables' as vars;
-@use 'assets/scss/settings/fonts' as fonts;
+@use "../settings/variables" as vars;
+@use "../settings/fonts" as fonts;
 
 .c-header {
   padding: vars.$spacing-md 0;

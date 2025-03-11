@@ -1,8 +1,13 @@
-@use 'assets/scss/settings/fonts' as fonts;
-@use 'assets/scss/utilities/spacing' as spacing;
-@use 'assets/scss/settings/variables' as vars;
+@use "../settings/fonts" as fonts;
+@use "../utilities/spacing" as spacing;
+@use "../settings/variables" as vars;
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: fonts.$font-family-headings;
   font-weight: fonts.$font-weight-bold;
   line-height: fonts.$line-height-sm;

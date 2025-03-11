@@ -84,12 +84,7 @@
                       >
                         Detail
                       </v-btn>
-                      <v-btn
-                        color="blue-lighten-2"
-                        @click.stop="openDialog(product)"
-                      >
-                        View
-                      </v-btn>
+                      <button @click="openDialog(product)">View</button>
                     </v-card-actions>
                   </v-card>
                 </v-col>

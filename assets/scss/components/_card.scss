@@ -1,6 +1,6 @@
-@use 'assets/scss/tools/mixins' as mixins;
-@use 'assets/scss/settings/variables' as vars;
-@use 'assets/scss/settings/fonts' as fonts;
+@use "../tools/mixins" as mixins;
+@use "../settings/variables" as vars;
+@use "../settings/fonts" as fonts;
 
 .c-card {
   background-color: #fff;

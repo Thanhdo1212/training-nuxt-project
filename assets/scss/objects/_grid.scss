@@ -1,5 +1,5 @@
-@use 'assets/scss/settings/variables' as vars;
-@use 'assets/scss/tools/mixins' as mixins;
+@use "../settings/variables" as vars;
+@use "../tools/mixins" as mixins;
 
 .o-grid {
   display: grid;
