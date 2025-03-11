@@ -24,6 +24,13 @@
                     height="400"
                     contain
                     class="bg-white"
+                    :srcset="[
+                        { src: 'image-small.jpg', width: 400 },
+                        { src: 'image-medium.jpg', width: 800 },
+                        { src: 'image-large.jpg', width: 1200 },
+                        ]"
+                    loading="lazy"
+                    :placeholder="product.image"
                 >
                   <template v-slot:placeholder>
                     <v-row class="fill-height ma-0" align="center" justify="center">
