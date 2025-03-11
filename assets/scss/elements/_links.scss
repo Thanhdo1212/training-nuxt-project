@@ -1,0 +1,19 @@
+@use "../settings/variables" as vars;
+@use "../tools/mixins" as mixins;
+
+a {
+  color: vars.$color-primary;
+  text-decoration: none;
+  @include mixins.transition(color);
+
+  &:hover,
+  &:focus {
+    color: darken(vars.$color-primary, 15%);
+    text-decoration: underline;
+  }
+
+  &:focus {
+    outline: thin dotted;
+    outline-offset: 2px;
+  }
+}

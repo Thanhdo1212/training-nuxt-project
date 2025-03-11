@@ -1,0 +1,76 @@
+@use "../tools/mixins" as mixins;
+@use "../settings/variables" as vars;
+@use "../settings/fonts" as fonts;
+
+.c-card {
+  background-color: #fff;
+  border-radius: vars.$border-radius-md;
+  overflow: hidden;
+  @include mixins.box-shadow(1);
+  @include mixins.transition;
+
+  &:hover {
+    @include mixins.box-shadow(2);
+    transform: translateY(-2px);
+  }
+
+  &__image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
+
+  &__body {
+    padding: vars.$spacing-md;
+  }
+
+  &__title {
+    font-size: fonts.$font-size-lg;
+    font-weight: fonts.$font-weight-bold;
+    margin-bottom: vars.$spacing-sm;
+  }
+
+  &__subtitle {
+    font-size: fonts.$font-size-sm;
+    color: vars.$text-muted;
+    margin-bottom: vars.$spacing-md;
+  }
+
+  &__content {
+    margin-bottom: vars.$spacing-md;
+  }
+
+  &__footer {
+    padding-top: vars.$spacing-sm;
+    border-top: 1px solid rgba(vars.$text-dark, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  // Variants
+  &--flat {
+    box-shadow: none;
+    border: 1px solid rgba(vars.$text-dark, 0.1);
+
+    &:hover {
+      box-shadow: none;
+    }
+  }
+
+  &--horizontal {
+    @include mixins.respond-to(md) {
+      display: flex;
+
+      .c-card__image {
+        width: 200px;
+        height: auto;
+        object-fit: cover;
+      }
+
+      .c-card__body {
+        flex: 1;
+      }
+    }
+  }
+}
